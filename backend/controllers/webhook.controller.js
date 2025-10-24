@@ -1,3 +1,4 @@
+import { Webhook } from "svix";
 export const clerkWebhook = async (req,res)=>{
     const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET
 
@@ -8,7 +9,7 @@ export const clerkWebhook = async (req,res)=>{
     const payload = req.body;
     const headers = req.headers;
 
-    const wh = new Webhook(secret);
+    const wh = new Webhook(WEBHOOK_SECRET);
     let evt;
     try {
         evt = wh.verify(payload, headers);
@@ -18,7 +19,7 @@ export const clerkWebhook = async (req,res)=>{
         });
     }
 
-    if(env.type === "user.created"){
+    if(evt.type === "user.created"){
         const newUser = new UserActivation({
             
         })
