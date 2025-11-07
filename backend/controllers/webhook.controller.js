@@ -23,11 +23,11 @@ export const clerkWebhook = async (req,res)=>{
         
 
     if(evt.type === "user.created"){
-        const newUser = new UserActivation({
-            clerkUserId:ent.data.id,
+        const newUser = new User({
+            clerkUserId:evt.data.id,
             username:evt.data.username || evt.data.email_addresses[0].email_address ,
             email:evt.data.email_addresses[0].email_address,
-            img:evt.data.profile_img_url,
+            img:evt.data.profile_image_url,
         })
 
         await newUser.save()
