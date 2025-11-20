@@ -1,30 +1,24 @@
 import { Schema } from "mongoose";
 import mongoose from "mongoose";
 
-const commentSchema = new Schema({
-    user:{
-        type:Schema.Types.ObjectId,
-        ref:"User",
-        required:true,
+const commentSchema = new Schema(
+  {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-    username: {
-        type:String,
-        required:true,
-        unique:true,
+    post: {
+      type: Schema.Types.ObjectId,
+      ref: "Post",
+      required: true,
     },
-    email: {
-        type:String,
-        required:true,
-        unique:true,
+    desc: {
+      type: String,
+      required: true,
     },
-    img: {
-        type:String,
-    },
-    savedPosts:{
-        type:[String],
-        default:[],
-    },   
-},{timestamps:true}
-)
+  },
+  { timestamps: true }
+);
 
-export default mongoose.model("Comment",commentSchema);
+export default mongoose.model("Comment", commentSchema);
