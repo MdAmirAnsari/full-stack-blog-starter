@@ -1,0 +1,43 @@
+Server is running!
+ MongoDB is connected
+[Object: null prototype] { page: '1', limit: '2' }
+[Object: null prototype] {
+  featured: 'true',
+  limit: '4',
+  sort: 'newest'
+}
+[Object: null prototype] { page: '1', limit: '10' }
+[Object: null prototype] {
+  featured: 'true',
+  limit: '4',
+  sort: 'newest'
+}
+[Object: null prototype] { page: '1', limit: '10' }
+[Object: null prototype] {
+  featured: 'true',
+  limit: '4',
+  sort: 'newest'
+}
+[Object: null prototype] { page: '1', limit: '10' }
+[Object: null prototype] {
+  featured: 'true',
+  limit: '4',
+  sort: 'newest'
+}
+[Object: null prototype] { page: '1', limit: '10' }
+[Object: null prototype] { page: '1', limit: '10', cat: 'web-design' }
+Clerk - DEPRECATION WARNING: "req.auth" is deprecated and will be removed in the next major release.
+Use `req.auth()` as a function instead.
+{
+  host: 'localhost:3000',
+  'user-agent': 'curl/8.7.1',
+  accept: '*/*',
+  'content-type': 'application/json',
+  'content-length': '81'
+}
+[Object: null prototype] {
+  featured: 'true',
+  limit: '4',
+  sort: 'newest'
+}
+[Object: null prototype] { page: '1', limit: '10' }

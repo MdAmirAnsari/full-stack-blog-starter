@@ -44,6 +44,10 @@ const Write = () => {
       toast.success("Post has been created");
       navigate(`/${res.data.slug}`);
     },
+    onError: (error) => {
+      console.error("Post creation error:", error);
+      toast.error(error.response?.data?.message || error.message || "Failed to create post");
+    },
   });
 
   if (!isLoaded) {
@@ -131,8 +135,12 @@ const Write = () => {
         >
           {mutation.isPending ? "Loading..." : "Send"}
         </button>
-        {"Progress:" + progress}
-        {/* {mutation.isError && <span>{mutation.error.message}</span>} */}
+        {"Progress: " + progress}
+        {mutation.isError && (
+          <span className="text-red-500 text-sm">
+            Error: {mutation.error.response?.data?.message || mutation.error.message}
+          </span>
+        )}
       </form>
     </div>
   );

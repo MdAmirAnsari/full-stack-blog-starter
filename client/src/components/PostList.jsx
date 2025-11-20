@@ -1,5 +1,5 @@
 import PostListItem from "./PostListItem";
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useSearchParams } from "react-router-dom";
@@ -16,7 +16,7 @@ const fetchPosts = async (pageParam, searchParams) => {
 };
 
 const PostList = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const {
     data,
@@ -34,12 +34,11 @@ const PostList = () => {
       lastPage.hasMore ? pages.length + 1 : undefined,
   });
 
-  // if (status === "loading") return "Loading...";
-  if (isFetching) return "Loading...";
+  // Show loading only on initial fetch
+  if (status === "pending") return "Loading...";
   
-
-  // if (status === "error") return "Something went wrong!";
-  if (error) return "Something went wrong!";
+  // Show error
+  if (status === "error") return "Something went wrong! " + error.message;
 
   const allPosts = data?.pages?.flatMap((page) => page.posts) || [];
 
@@ -50,7 +49,7 @@ const PostList = () => {
       hasMore={!!hasNextPage}
       loader={<h4>Loading more posts...</h4>}
       endMessage={
-        <p>
+        <p style={{ textAlign: 'center' }}>
           <b>All posts loaded!</b>
         </p>
       }
